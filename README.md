@@ -1,5 +1,5 @@
-## Bloccit: a Reddit clone to teach the fundamentals of web development and Rails 4.
+## jennie-bloccit: a Reddit clone to teach the fundamentals of web development and Rails 4.
 
-Made with my mentor at [Bloc](http://bloc.io).
+[jennie-bloccit](https://dashboard-next.heroku.com/apps/jennie-bloccit/resources).
 
 

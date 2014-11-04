@@ -259,5 +259,5 @@ Devise.setup do |config|
 
   Devise.setup do |config|
   config.secret_key = ENV['DEVISE_SECRET_KEY']
-  
+
 end

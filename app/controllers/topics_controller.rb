@@ -40,4 +40,9 @@ class TopicsController < ApplicationController
        render :edit
      end
    end
+   private
+
+  def topic_params
+  params.require(:post).permit(:title, :body)
+  end
 end

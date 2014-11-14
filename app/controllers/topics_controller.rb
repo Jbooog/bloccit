@@ -32,9 +32,8 @@ class TopicsController < ApplicationController
  
    def update
      @topic = Topic.find(params[:id])
-     @topic = current_user.topic.build(topic_params)
-     authorize @topic
-     if @topic.update_attributes(params.require(:topic).permit(:name, :description, :public))
+      authorize @topic
+     if @topic.update_attributes(topic_params)
        redirect_to @topic
      else
        flash[:error] = "Error saving topic. Please try again"

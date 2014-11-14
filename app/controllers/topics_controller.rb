@@ -32,6 +32,7 @@ class TopicsController < ApplicationController
  
    def update
      @topic = Topic.find(params[:id])
+     @topic = current_user.topic.build(topic_params)
       authorize @topic
      if @topic.update_attributes(params.require(:topic).permit(:name, :description, :public))
        redirect_to @topic

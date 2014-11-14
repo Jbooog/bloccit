@@ -36,7 +36,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     authorize @post
 
-    if @post.update_attributes(post_params)
+    if @post.update_attributes(params.require(:post).permit(:title, :body))
       flash[:notice] = "Post was updated."
       redirect_to [@topic, @post]
     else

@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.1.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.9'
@@ -11,7 +12,10 @@ gem 'rails', '4.0.9'
  
  group :development do
    gem 'sqlite3'
+   gem "better_errors"
  end
+
+ gem "binding_of_caller"
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.2'

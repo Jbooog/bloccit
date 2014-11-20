@@ -1,4 +1,4 @@
- <%= form_for [topic, post] do |f| %>
+<%= form_for [topic, post] do |f| %>
 
   <% if post.errors.any? %>
     <div class="alert alert-danger">
@@ -21,10 +21,11 @@
     <%= f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter post body" %>
   <% end %>
 
-  <%= form_group_tag(post.errors[:image]) do %>
-    <%= f.label :image %>
-    <%= f.file_field :image %>
-    <%= f.hidden_field :image_cache %>
+  <% if post.image? %>
+    <div class="form-group">
+      <p>Current image</p>
+      <%= image_tag( current_user.image.thumb.url ) %>
+    </div>
   <% end %>
 
   <div class="form-group">

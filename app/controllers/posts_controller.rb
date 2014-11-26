@@ -3,9 +3,8 @@ class PostsController < ApplicationController
     @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:id])
     @comments = @post.comments
-    @comment = current_user.comments.build
-    # @comments = Comment.where( post_id: params[:id] )
     @comment = Comment.new
+    # @comments = Comment.where( post_id: params[:id] )
   end
 
   def new

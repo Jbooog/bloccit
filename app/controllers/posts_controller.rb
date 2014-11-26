@@ -2,6 +2,10 @@ class PostsController < ApplicationController
   def show
     @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:id])
+    @comments = @post.comments
+    @comment = current_user.comments.build
+    # @comments = Comment.where( post_id: params[:id] )
+    @comment = Comment.new
   end
 
   def new

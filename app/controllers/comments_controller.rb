@@ -2,10 +2,9 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
   def create 
     @topic = Topic.find(params[:topic_id])
-    @post = Post.find(params[:post_id])
-    @comment = current_user.comments.build( comment_params )
+    @post = @topic.posts.find(params[:post_id])
+    @comment = current_user.comments.build(comment_params)
     @comment.post = @post
-    @new_comment = Comment.new
 
     if @comment.save
       flash[:notice] = "Comment was saved."

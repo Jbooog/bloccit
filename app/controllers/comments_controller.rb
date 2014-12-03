@@ -1,12 +1,12 @@
 class CommentsController < ApplicationController
   
     def create 
-    @topic = Topic.find(params[:topic_id])
-    @post = @topic.posts.find(params[:post_id])
-    @comment = current_user.comments.build(comment_params)
-    # this automatically sets @comment.user_id = current_user.id
-    #@comment = Comment.new comment_params
-    #@comment.user_id = current_user.id
+     @post = Post.find(params[:post_id])
+     @topic = @post.topic
+     @comment = current_user.comments.build(comment_params)
+     # this automatically sets @comment.user_id = current_user.id
+     #@comment = Comment.new comment_params
+     #@comment.user_id = current_user.id
 
     @comment.post = @post
 
@@ -20,18 +20,17 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-     @topic = Topic.find(params[:topic_id])
-     @post = @topic.posts.find(params[:post_id])
+     @post = Post.find(params[:post_id])
      @comment = @post.comments.find(params[:id])
+     @topic = @post.topic
  
      authorize @comment
      if @comment.destroy
        flash[:notice] = "Comment was removed."
-       redirect_to [@topic, @post]
      else
        flash[:error] = "Comment couldn't be deleted. Try again."
-       redirect_to [@topic, @post]
      end
+     redirect_to [@topic, @post]
    end
   private
 

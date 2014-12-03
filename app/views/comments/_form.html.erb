@@ -1,7 +1,7 @@
 <%= form_for [@topic, @post, @comment] do |f| %>
   <div class="form-group">
     <%= f.label :body, "Comment:" %>
-    <p><%= f.text_area :body, placeholder: "Enter comment here"%></p>
+    <p><%= f.text_area :body, placeholder: "Enter comment here!!", style: "width: 100%" %></p>
     <p><%= f.submit "Submit", class: 'btn btn-success' %></p>
   </div>
 <% end %>

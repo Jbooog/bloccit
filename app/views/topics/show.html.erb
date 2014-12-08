@@ -7,8 +7,11 @@
 <div class="row">
   <div class="col-md-8">
     <p class="lead"><%= @topic.description %></p>
+
     <% @posts.each do |post| %>
+
       <div class="media">
+        <%= render partial: 'votes/voter', locals: { post: post } %>
         <div class="media-body">
           <h4 class="media-heading">
             <%= link_to (markdown post.title), [@topic, post] %>
@@ -23,7 +26,9 @@
         </div>
       </div>
     <% end %>
+
     <%= will_paginate @posts %>
+    
   </div>
    <div class="col-md-4">
    <% if policy(Post.new).create? %>

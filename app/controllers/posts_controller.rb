@@ -5,6 +5,7 @@ class PostsController < ApplicationController
     @comments = @post.comments
     @comment = Comment.new
     # @comments = Comment.where( post_id: params[:id] )
+    authorize @topic
   end
 
   def new

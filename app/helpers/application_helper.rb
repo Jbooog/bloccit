@@ -6,10 +6,22 @@
       content_tag :div, capture(&block), class: 'form-group'
     end
   end
-def markdown(text)
-  renderer = Redcarpet::Render::HTML.new
-  extensions = {fenced_code_blocks: true}
-  redcarpet = Redcarpet::Markdown.new(renderer, extensions)
-  (redcarpet.render text).html_safe
+
+  def markdown(text)
+    renderer = Redcarpet::Render::HTML.new
+    extensions = {fenced_code_blocks: true}
+    redcarpet = Redcarpet::Markdown.new(renderer, extensions)
+    (redcarpet.render text).html_safe
+  end
+  def vote_link_classes(post, up_down)
+    if up_down == 'up'
+      icon = 'glyphicon-chevron-up'
+      voted = (current_user.voted(post) && current_user.voted(post).up_vote?)
+    else
+      icon = 'glyphicon-chevron-down'
+      voted = (current_user.voted(post) && current_user.voted(post).down_vote?)
+    end
+    "glyphicon #{icon} #{voted ? 'voted' : ''}"
+   end
 end
- end
+

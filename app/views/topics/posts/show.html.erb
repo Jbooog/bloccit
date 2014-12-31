@@ -33,7 +33,7 @@
 <hr>
 <div class ="row">
   <div class="col-md-8">
-    <%= render partial: 'comments/comment', locals: { post: @post, comments: @comments } %>
+    <%= render partial: 'comments/comment', collection: @comments %>
     <%= render partial: 'comments/form', locals: { post: @post, comment: @comments.new} %>
   </div>
 </div>
